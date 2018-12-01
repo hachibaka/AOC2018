@@ -8,10 +8,7 @@ def part1_tot_freq(freqchanges):
 
 def part2_first_freq(freqchanges):
 	seenfreq = [0]
-	start = 0
-	
-			
-	
+	start = 0	
 	maxindex = len(freqchanges)
 	print("Length of list is ",maxindex)
 	listloopcounter = i = 0
@@ -19,7 +16,7 @@ def part2_first_freq(freqchanges):
 		if i == maxindex:
 			i = 0
 			listloopcounter +=1
-			#print("Number of time list has been looped is {} and start is {}".format(listloopcounter,start))
+			
 		start += freqchanges[i]
 		i+=1
 		position = bisect.bisect(seenfreq, start)
