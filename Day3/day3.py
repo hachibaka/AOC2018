@@ -47,7 +47,7 @@ def get_nonoverlap_claim(claims):
 			return clamid
 		
 
-claims = ['#1 @ 1,3: 4x4',
+sample_claims = ['#1 @ 1,3: 4x4',
 		  '#2 @ 3,1: 4x4',
 		  '#3 @ 5,5: 2x2']
 
