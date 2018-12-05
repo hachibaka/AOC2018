@@ -25,17 +25,10 @@ def alchmist_reduction_part2(polymer):
 	minlength = 99999999
 	
 	unique_units = set(polymer.lower())
+	print(unique_units)
 	for unit in unique_units:
-		stack = []
-		for ch in polymer:
-			if not (ch == unit or isidentical(ch, unit)):
-				if not stack:
-					stack.append(ch)
-				elif isidentical(stack[-1], ch):
-					stack.pop()
-				else:
-					stack.append(ch)
-		stacklength = len(stack)
+		_temp_polymer = [ch for ch in polymer if not (ch == unit or isidentical(ch, unit))]
+		stacklength = alchmist_reduction_part1(_temp_polymer)
 		if minlength > stacklength:
 			minlength = stacklength
 			
