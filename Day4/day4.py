@@ -75,13 +75,13 @@ def calc_part2(gaurd_sleep_times):
 
 if __name__ == "__main__":
 	notes = read_file('day4-input.txt')
-	print("*********Before Sort********")
-	print_notes(notes)
+	#print("*********Before Sort********")
+	#print_notes(notes)
 	notes =  sort_notes(notes)
-	print("*********After Sort********")
-	print_notes(notes)
+	#print("*********After Sort********")
+	#print_notes(notes)
 	gaurd_sleep_times = parse_notes(notes)
-	print(gaurd_sleep_times)
+	#print(gaurd_sleep_times)
 	print("part 1 - ID multiplied by minute is ", calc_part1(gaurd_sleep_times))
 	print("part 2 - ID multiplied by minute is ", calc_part2(gaurd_sleep_times))
 
