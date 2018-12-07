@@ -14,20 +14,26 @@ def manhattan_distance(p1, p2):
 
 def points_distribution(points, square_size):
 	manhattan_points = {}
-
+	_safe_distance_point = {}
 	
 	for i in range(square_size+1):
 		for j in range(square_size+1):
 			
 			_dist_points = {}
+			_safe_distance = 0
 			for k, point in enumerate(points):
 				dist = manhattan_distance((j,i), point)
+				_safe_distance += dist
 				if dist in _dist_points:
 					_dist_points[dist].append(k)
 				else:
 					_dist_points[dist] = [k]
 			
 			min_dist = min(_dist_points.keys())
+			
+			if _safe_distance < 10000:
+				_safe_distance_point[(j,i)] = True
+
 			#print("Minimum distance for point {}, {} is {} for label {}".format(j,i, min_dist,_dist_points[min_dist]))
 			if len(_dist_points[min_dist]) > 1:
 				manhattan_points[(j, i)] =  '.'
@@ -35,22 +41,10 @@ def points_distribution(points, square_size):
 				manhattan_points[(j, i)] = _dist_points[min_dist][0]
 						
 
-	return manhattan_points
-
-def print_mahattan_points(m_points, square_size):
-	print('     ',end='')
-	for i in range(square_size+1):
-		print(i,sep=' ',end='')
-	print()
-	for i in range(square_size+1):
-		print(i,'-->',end='')
-		for j in range(square_size+1):
-
-			print(manhattan_points[(j,i)], sep=' ',end='')
-		print()
+	return manhattan_points, _safe_distance_point
 
 
-def find_longest_distance(m_points, square_size, num_of_points):
+def find_longest_distance_part1(m_points, square_size, num_of_points):
 
 	_points_area = {}
 	for point, label in m_points.items():
@@ -79,10 +73,11 @@ num_of_points = len(points)
 #print(points)
 square_size = find_max_x_y(points)
 
-manhattan_points = points_distribution(points, square_size)
+manhattan_points, _safe_distance_point = points_distribution(points, square_size)
 #print(manhattan_points)
 
-print("Max Distance not infinite is ", find_longest_distance(manhattan_points, square_size, num_of_points))
+print("part1 - Max Distance not infinite is ", find_longest_distance_part1(manhattan_points, square_size, num_of_points))
+print("part2 - Safe Distance not infinite is ", len(_safe_distance_point))
 
 #print_mahattan_points(manhattan_points, square_size)
 
