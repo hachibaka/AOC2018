@@ -22,10 +22,8 @@ def alchmist_reduction_part1(polymer):
 
 def alchmist_reduction_part2(polymer):
 	
-	minlength = 99999999
-	
+	minlength = 99999999	
 	unique_units = set(polymer.lower())
-	print(unique_units)
 	for unit in unique_units:
 		_temp_polymer = [ch for ch in polymer if not (ch == unit or isidentical(ch, unit))]
 		stacklength = alchmist_reduction_part1(_temp_polymer)
@@ -34,8 +32,6 @@ def alchmist_reduction_part2(polymer):
 			
 
 	return minlength
-
-
 
 polymer = read_file('day5-input.txt')
 
