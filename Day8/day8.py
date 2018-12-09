@@ -4,11 +4,6 @@ def read_file(filename):
 	return licence
 
 
-class Node:
-	def __init__(node_id, metadata):
-		self.metadata = metadata
-
-
 def parse_licence(licence):
 	stack = []
 	node_data = {}
